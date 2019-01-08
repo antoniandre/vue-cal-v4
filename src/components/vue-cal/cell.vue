@@ -102,9 +102,7 @@ export default {
           }
         })
         if (!split3) simultaneous = 2
-      }
-
-      else if (simultaneous === 2) {
+      } else if (simultaneous === 2) {
         const otherEvent = this.events.find(e => e.id === Object.keys(event.simultaneous)[0])
 
         if (Object.keys(otherEvent.overlapping).length && Object.keys(otherEvent.overlapped).length) {
