@@ -784,6 +784,7 @@
       sshpre.mt-2(language="js").
         locale:             [String],  default: 'en'
         hideViewSelector:   [Boolean], default: false
+        hideNavigator:      [Boolean], default: false
         hideWeekends:       [Boolean], default: false
         disableViews:       [Array],   default: []
         defaultView:        [String],  default: 'week'
@@ -845,6 +846,11 @@
           p.
             When set to true, the top view selector will disappear.#[br]
             You can still navigate from a view to another by clicking a cell (narrower view) or the view title (broader view).
+        li
+          code.mr-2 hideNavigator
+          span.code [Boolean], default: false
+          p.
+            When set to true, the top view date navigator will disappear.#[br]
         li
           code.mr-2 hideWeekends
           span.code [Boolean], default: false
@@ -1085,6 +1091,8 @@
         a(href="#release-notes") Release Notes
         a(name="release-notes")
 
+      div
+        | #[strong Version 1.17.1] Allow hiding of navigator
       div
         | #[strong Version 1.17.0] Allow overriding time cells &amp; title
       div
