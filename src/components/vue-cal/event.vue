@@ -52,21 +52,21 @@ export default {
 
   methods: {
     eventStyles (event) {
-        if (!this.vuecal.time || !event.startTime || this.vuecal.view.id === 'month' || this.allDay) return {}
-        const resizeAnEvent = this.domEvents.resizeAnEvent
+      if (!this.vuecal.time || !event.startTime || this.vuecal.view.id === 'month' || this.allDay) return {}
+      const resizeAnEvent = this.domEvents.resizeAnEvent
 
-        let styles = {}
-        if (event.style && event.style instanceof Object) {
-            styles = event.style
-        }
+      let styles = {}
+      if (event.style && event.style instanceof Object) {
+        styles = event.style
+      }
 
-        return [
-            {
-                top: `${event.top}px`,
-                height: `${resizeAnEvent.newHeight && resizeAnEvent._eid === event._eid ? resizeAnEvent.newHeight : event.height}px`
-            },
-            styles
-        ]
+      return [
+        {
+          top: `${event.top}px`,
+          height: `${resizeAnEvent.newHeight && resizeAnEvent._eid === event._eid ? resizeAnEvent.newHeight : event.height}px`
+        },
+        styles
+      ]
     },
 
     eventClasses (event) {
