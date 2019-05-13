@@ -1,7 +1,7 @@
 <template lang="pug">
 .vuecal__event(
   :class="eventClasses(event)"
-  :style="eventStyles(event)"
+  v-bind:style="eventStyles(event)"
   @mouseenter="onMouseEnter($event, event)"
   @mouseleave="onMouseLeave($event, event)"
   @touchstart="onTouchStart($event, event)"
@@ -52,13 +52,21 @@ export default {
 
   methods: {
     eventStyles (event) {
-      if (!this.vuecal.time || !event.startTime || this.vuecal.view.id === 'month' || this.allDay) return {}
-      const resizeAnEvent = this.domEvents.resizeAnEvent
+        if (!this.vuecal.time || !event.startTime || this.vuecal.view.id === 'month' || this.allDay) return {}
+        const resizeAnEvent = this.domEvents.resizeAnEvent
 
-      return {
-        top: `${event.top}px`,
-        height: `${resizeAnEvent.newHeight && resizeAnEvent._eid === event._eid ? resizeAnEvent.newHeight : event.height}px`
-      }
+        let styles = {}
+        if (event.style && event.style instanceof Object) {
+            styles = event.style
+        }
+
+        return [
+            {
+                top: `${event.top}px`,
+                height: `${resizeAnEvent.newHeight && resizeAnEvent._eid === event._eid ? resizeAnEvent.newHeight : event.height}px`
+            },
+            styles
+        ]
     },
 
     eventClasses (event) {
