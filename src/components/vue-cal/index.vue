@@ -542,6 +542,7 @@ export default {
 
           let endDate = event.startDate.addDays(endCell - resizeAnEvent.startCell)
           let newDaysCount = countDays(event.startDate, endDate)
+
           if (this.multipleDayEvents && newDaysCount !== event.daysCount) {
             // Check that all segments are up to date.
             let lastSegmentFormattedDate = null
