@@ -184,6 +184,7 @@ export default {
     events: { type: Array, default: () => [] },
     editableEvents: { type: Boolean, default: false },
     resizeX: { type: Boolean, default: false },
+    multipleDayEvents: { type: Boolean, default: true },
     eventsOnMonthView: { type: [Boolean, String], default: false },
     eventsCountOnYearView: { type: Boolean, default: false },
     onEventClick: { type: [Function, null], default: null },
@@ -541,8 +542,7 @@ export default {
 
           let endDate = event.startDate.addDays(endCell - resizeAnEvent.startCell)
           let newDaysCount = countDays(event.startDate, endDate)
-
-          if (newDaysCount !== event.daysCount) {
+          if (this.multipleDayEvents && newDaysCount !== event.daysCount) {
             // Check that all segments are up to date.
             let lastSegmentFormattedDate = null
             if (newDaysCount > event.daysCount) lastSegmentFormattedDate = addEventSegment(event, this)
