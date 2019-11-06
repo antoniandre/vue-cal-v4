@@ -12,11 +12,12 @@
     transition(:name="`slide-fade--${transitionDirection}`" :appear="vuecal.transitions")
       .vuecal__flex(column :key="vuecal.transitions ? `${i}-${heading.dayOfMonth}` : false")
         .vuecal__flex.weekday-label(grow)
-          //- For small/xsmall option. 3 media queries also truncate weekdays.
-          span.full {{ heading.full }}
-          span.small {{ heading.small }}
-          span.xsmall {{ heading.xsmall }}
-          span(v-if="heading.dayOfMonth") &nbsp;{{ heading.dayOfMonth }}
+          slot(name="weekday-renderer" :heading="{ heading }")
+            //- For small/xsmall option. 3 media queries also truncate weekdays.
+            span.full {{ heading.full }}
+            span.small {{ heading.small }}
+            span.xsmall {{ heading.xsmall }}
+            span(v-if="heading.dayOfMonth") &nbsp;{{ heading.dayOfMonth }}
         .vuecal__flex.vuecal__split-days-headers(
           v-if="vuecal.hasSplits && vuecal.stickySplitLabels"
           grow)
