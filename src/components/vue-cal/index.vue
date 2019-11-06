@@ -17,7 +17,6 @@
     template(v-slot:title)
       slot(name="title" :title="viewTitle" :view="view") {{ viewTitle }}
     template(v-slot:weekday-renderer="{ heading }")
-      span.bar  {{ "beta" }}
       slot(name="weekday-renderer" :heading="heading")
 
   .vuecal__flex.vuecal__body(v-if="!hideBody" grow)

@@ -31,7 +31,6 @@
     :transition-direction="transitionDirection"
     :switch-to-narrower-view="switchToNarrowerView")
     template(v-slot:weekday-renderer="{ heading }")
-      span.bar  {{ "alpha" }}
       slot(name="weekday-renderer" :heading="heading")
 
   //- Sticky split-days headers on day view only.
