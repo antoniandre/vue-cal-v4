@@ -14,6 +14,7 @@
         .vuecal__flex.weekday-label(grow)
           slot(name="weekday-renderer" :heading="{ heading }")
             //- For small/xsmall option. 3 media queries also truncate weekdays.
+            span.baz {{ "delta" }}
             span.full {{ heading.full }}
             span.small {{ heading.small }}
             span.xsmall {{ heading.xsmall }}
