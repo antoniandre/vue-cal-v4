@@ -29,8 +29,11 @@
     :view="viewProps.view"
     :week-days="weekDays"
     :transition-direction="transitionDirection"
-    :switch-to-narrower-view="switchToNarrowerView"
-  )
+    :switch-to-narrower-view="switchToNarrowerView")
+    template(v-slot:weekday-renderer="{ heading }")
+      span.bar  {{ "alpha" }}
+      slot(name="weekday-renderer" :heading="heading")
+
   //- Sticky split-days headers on day view only.
   transition(:name="`slide-fade--${transitionDirection}`")
     .vuecal__flex.vuecal__split-days-headers(v-if="viewProps.view.id === 'day' && $parent.hasSplits && options.stickySplitLabels && !options.minSplitWidth")
