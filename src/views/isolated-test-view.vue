@@ -10,7 +10,6 @@ vue-cal(
 <script>
 import VueCal from '@/components/vue-cal'
 
-const now = new Date()
 export default {
   components: { VueCal },
   data: () => ({
