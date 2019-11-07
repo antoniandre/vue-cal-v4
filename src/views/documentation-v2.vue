@@ -997,10 +997,6 @@
             editable-events
             :events="events"
             @cell-dblclick="$refs.vuecal3.createEvent($event, { title: 'New Event', classes: ['blue-event'] })")
-            template(v-slot:weekday-renderer="{ heading }")
-              span.full {{ "2019-10-11" + getRandomString() }}
-              span.small {{ "2019-10-11" + getRandomString() }}
-              span.xsmall {{ "2019-10-11" + getRandomString() }}
         sshpre.my-2.caption(language="html-vue").
           &lt;vue-cal ref="vuecal"
                    selected-date="2018-11-19"
@@ -3566,9 +3562,6 @@ export default {
     deleteEventFunction: null
   }),
   methods: {
-    getRandomString () {
-      return (Math.floor(Math.random() * 10)) + ''
-    },
     logEvents (emittedEventName, params) {
       if (!this.logMouseEvents && ['event-mouse-enter', 'event-mouse-leave'].includes(emittedEventName)) {
         return
