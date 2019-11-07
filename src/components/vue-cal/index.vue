@@ -76,7 +76,6 @@
                 :switch-to-narrower-view="switchToNarrowerView"
                 :style="contentMinWidth ? `min-width: ${contentMinWidth}px` : ''")
                 template(v-slot:weekday-renderer="{ heading }")
-                  span.bar {{ "gamma" }}
                   slot(name="weekday-renderer" :heading="heading")
               .vuecal__flex.vuecal__split-days-headers(v-else-if="hasSplits && stickySplitLabels && minSplitWidth"
                 :style="contentMinWidth ? `min-width: ${contentMinWidth}px` : ''")
