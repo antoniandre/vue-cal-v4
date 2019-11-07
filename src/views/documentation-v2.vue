@@ -997,8 +997,10 @@
             editable-events
             :events="events"
             @cell-dblclick="$refs.vuecal3.createEvent($event, { title: 'New Event', classes: ['blue-event'] })")
-            template(v-slot:weekday-renderer="{ heading }")
-              span.foo {{ "meat" }}
+            template(v-slot:weekday-renderer="{ headings }")
+              span.full {{ '2019-10-11' }}
+              span.small {{ '2019-10-11' }}
+              span.xsmall {{ '2019-10-11' }}
         sshpre.my-2.caption(language="html-vue").
           &lt;vue-cal ref="vuecal"
                    selected-date="2018-11-19"
