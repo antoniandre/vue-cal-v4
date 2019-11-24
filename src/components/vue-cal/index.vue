@@ -688,7 +688,7 @@ export default {
       // For each event of the `events` prop, prepare the event for vue-cal:
       // Populate missing keys: start, startDate, startTimeMinutes, end, endDate, endTimeMinutes, daysCount.
       // Lots of these variables may look redundant but are here for performance as a cached result of calculation. :)
-      this.events.forEach(event => {
+      this.events.forEach((event, i) => {
         // Event Start, accepts formatted string - startDate accepts Date object.
         let start, startDate, startDateF, startTime, hoursStart, minutesStart
         if (event.start) {
@@ -707,8 +707,21 @@ export default {
         const startTimeMinutes = parseInt(hoursStart) * 60 + parseInt(minutesStart)
         start = event.start || startDateF + ' ' + formatTime(startTimeMinutes)
 
-        // Event End, accepts formatted string - endDate accepts Date object.
         let end, endDate, endDateF, endTime, hoursEnd, minutesEnd
+        // Event End, accepts formatted string - endDate accepts Date object.
+        if (!event.end && event.endDate && event.endDate instanceof Date && event.endDate.toLocaleTimeString('en-US', { hourCycle: 'h24' } === '00:00:00')) {
+          event.endDate.setDate(event.endDate.getDate() - 1)
+          event.end = event.endDate.toISOString().split('T')[0] + ' 24:00'
+          this.events[i].end = event.end
+          event.endDate.setDate(event.endDate.getDate() + 1)
+        }
+        else if (event.end.split(' ')[1] === '00:00') {
+          const tempEnd = new Date(event.end)
+          tempEnd.setDate(tempEnd.getDate() - 1)
+          event.end = tempEnd.toISOString().split('T')[0] + ' 24:00'
+          this.events[i].end = event.end
+        }
+
         if (event.end) {
           // eslint-disable-next-line
           !([endDateF, endTime = ''] = event.end.split(' '))
