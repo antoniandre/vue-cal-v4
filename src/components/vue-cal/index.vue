@@ -39,7 +39,8 @@
               :all-day="true"
               :min-timestamp="minTimestamp"
               :max-timestamp="maxTimestamp"
-              :cell-splits="hasSplits && daySplits || []")
+              :cell-splits="hasSplits && daySplits || []"
+              :eventMaxWidth="eventMaxWidth")
               template(v-slot:event-renderer="{ event, view }")
                 slot(name="event-renderer" :view="view" :event="event")
                   .vuecal__event-title.vuecal__event-title--edit(
@@ -95,7 +96,8 @@
                   :cell-width="hideWeekdays.length && ['month', 'week'].includes(view.id) && cellWidth"
                   :min-timestamp="minTimestamp"
                   :max-timestamp="maxTimestamp"
-                  :cell-splits="hasSplits && daySplits || []")
+                  :cell-splits="hasSplits && daySplits || []"
+                  :eventMaxWidth="eventMaxWidth")
                   template(v-slot:cell-content="{ events, split, selectCell }")
                     slot(name="cell-content" :cell="cell" :view="view" :go-narrower="selectCell" :events="events")
                       .split-label(v-if="split && !stickySplitLabels" v-html="split.label")
@@ -161,6 +163,7 @@ export default {
     defaultView: { type: String, default: 'week' },
     disableViews: { type: Array, default: () => [] },
     editableEvents: { type: Boolean, default: false },
+    eventMaxWidth: { type: Number, default: 100 },
     events: { type: Array, default: () => [] },
     eventsCountOnYearView: { type: Boolean, default: false },
     eventsOnMonthView: { type: [Boolean, String], default: false },

@@ -36,7 +36,8 @@ export default {
     overlaps: { type: Array, default: () => [] },
     eventPosition: { type: Number, default: 0 },
     overlapsStreak: { type: Number, default: 0 },
-    allDay: { type: Boolean, default: false }
+    allDay: { type: Boolean, default: false },
+    eventMaxWidth: { type: Number, default: 100 }
   },
 
   methods: {
@@ -138,8 +139,8 @@ export default {
     // Don't rely on global variables otherwise whenever it would change all the events would be redrawn.
     eventStyles () {
       if (this.event.allDay || !this.vuecal.time || !this.event.endTimeMinutes || this.vuecal.view.id === 'month' || this.allDay) return {}
-      let width = 100 / Math.min(this.overlaps.length + 1, this.overlapsStreak)
-      let left = (100 / (this.overlaps.length + 1)) * this.eventPosition
+      let width = this.eventMaxWidth / Math.min(this.overlaps.length + 1, this.overlapsStreak)
+      let left = (this.eventMaxWidth / (this.overlaps.length + 1)) * this.eventPosition
 
       if (this.vuecal.minEventWidth && width < this.vuecal.minEventWidth) {
         width = this.vuecal.minEventWidth

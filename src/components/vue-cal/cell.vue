@@ -40,7 +40,8 @@
           :cell-events="splits.length ? split.events : events"
           :overlaps="((splits.length ? split.overlaps[event._eid] : cellOverlaps[event._eid]) || []).overlaps"
           :event-position="((splits.length ? split.overlaps[event._eid] : cellOverlaps[event._eid]) || []).position"
-          :overlaps-streak="splits.length ? split.overlapsStreak : cellOverlapsStreak")
+          :overlaps-streak="splits.length ? split.overlapsStreak : cellOverlapsStreak"
+          :eventMaxWidth="eventMaxWidth")
           template(v-slot:event-renderer="{ event, view }")
             slot(name="event-renderer" :view="view" :event="event")
     .vuecal__now-line(
@@ -65,7 +66,8 @@ export default {
     minTimestamp: { type: [Number, null], default: null },
     maxTimestamp: { type: [Number, null], default: null },
     cellWidth: { type: [Number, Boolean], default: false },
-    allDay: { type: Boolean, default: false }
+    allDay: { type: Boolean, default: false },
+    eventMaxWidth: { type: Number, default: 100 }
   },
 
   data: () => ({
