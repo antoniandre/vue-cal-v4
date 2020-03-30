@@ -627,6 +627,10 @@ export default {
         )
         event.end = `${formatDateLite(event.endDate)} ${formatTimeLite(event.endDate)}`
 
+        const cleanEvent = this.cleanupEvent(event)
+
+        this.$emit('event-resize', { event: cleanEvent, oldDate: resizeAnEvent.originalEndDate })
+        
         // Resize events horizontally if resize-x is enabled (add/remove segments).
         if (this.resizeX && this.view.id === 'week') {
           event.daysCount = countDays(event.startDate, event.endDate)
