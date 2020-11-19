@@ -201,7 +201,20 @@ export default {
   },
 
   props: {
-    activeView: { type: String, default: 'week' },
+    activeView: {
+      type: String,
+      default: 'week',
+      validator: function (view) {
+        const allowedViews = [
+          'day',
+          'week',
+          'month',
+          'year',
+          'years'
+        ];
+        return allowedViews.includes(view);
+      }
+    },
     // Only used if there are daySplits with minSplitWidth, to add the same height top spacer on time column.
     allDayBarHeight: { type: [String, Number], default: '25px' },
     cellClickHold: { type: Boolean, default: true },
