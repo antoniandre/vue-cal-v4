@@ -379,8 +379,6 @@ export default {
         if (!this.cellSplits.length) this.$nextTick(this.checkCellOverlappingEvents)
       }
 
-      console.log('events', events);
-
       return events
     },
     eventsCount () {
