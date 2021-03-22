@@ -243,6 +243,7 @@ export default {
     specialHours: { type: Object, default: () => ({}) },
     splitDays: { type: Array, default: () => [] },
     startWeekOnSunday: { type: Boolean, default: false },
+    startWeekOnDay: { type: Number, default: 1 },
     stickySplitLabels: { type: Boolean, default: false },
     time: { type: Boolean, default: true },
     timeCellHeight: { type: Number, default: 40 }, // In pixels.
@@ -477,8 +478,8 @@ export default {
 
           // If the first day of the month is not a FirstDayOfWeek (Monday or Sunday), prepend missing days to the days array.
           let startDate = new Date(this.view.startDate)
-          if (startDate.getDay() !== (this.startWeekOnSunday ? 0 : 1)) {
-            startDate = ud.getPreviousFirstDayOfWeek(startDate, this.startWeekOnSunday)
+          if (startDate.getDay() !== this.startWeekOnDayComputed) {
+            startDate = ud.getPreviousFirstDayOfWeek(startDate, this.startWeekOnDayComputed)
           }
 
           // Used in viewCells computed array & returned in emitted events.
@@ -489,7 +490,7 @@ export default {
           if (this.hideWeekends) {
             // Remove first weekend from firstCellDate if hide-weekends.
             if ([0, 6].includes(this.view.firstCellDate.getDay())) {
-              const daysToAdd = this.view.firstCellDate.getDay() === 6 && !this.startWeekOnSunday ? 2 : 1
+              const daysToAdd = this.view.firstCellDate.getDay() === 6 ? 6 - this.startWeekOnDayComputed : this.startWeekOnDayComputed
               this.view.firstCellDate = ud.addDays(this.view.firstCellDate, daysToAdd)
             }
             // Remove first weekend from startDate if hide-weekends.
@@ -499,7 +500,7 @@ export default {
             }
             // Remove last weekend from lastCellDate if hide-weekends.
             if ([0, 6].includes(this.view.lastCellDate.getDay())) {
-              const daysToSubtract = this.view.lastCellDate.getDay() === 0 && !this.startWeekOnSunday ? 2 : 1
+              const daysToSubtract = this.view.lastCellDate.getDay() === 0 ? 6 - this.startWeekOnDayComputed : this.startWeekOnDayComputed
               this.view.lastCellDate = ud.subtractDays(this.view.lastCellDate, daysToSubtract)
             }
             // Remove last weekend from endDate if hide-weekends.
@@ -511,9 +512,17 @@ export default {
           break
         }
         case 'week': {
-          date = ud.getPreviousFirstDayOfWeek(date, this.startWeekOnSunday)
+          date = ud.getPreviousFirstDayOfWeek(date, this.startWeekOnDayComputed)
           const weekDaysCount = this.hideWeekends ? 5 : 7
-          this.view.startDate = this.hideWeekends && this.startWeekOnSunday ? ud.addDays(date, 1) : date
+          if (this.hideWeekends && this.startWeekOnDayComputed === 0) {
+            this.view.startDate = ud.addDays(date, 1)
+          }
+          else if (this.hideWeekends && this.startWeekOnDayComputed === 6) {
+            this.view.startDate = ud.addDays(date, 2)
+          }
+          else {
+            this.view.startDate = date
+          }
           this.view.startDate.setHours(0, 0, 0, 0)
           this.view.endDate = ud.addDays(date, weekDaysCount)
           this.view.endDate.setSeconds(-1) // End at 23:59:59.
@@ -539,6 +548,7 @@ export default {
 
       if (this.ready) {
         const startDate = this.view.startDate
+        const weekOfYear = ud.getWeek(startDate)
         const params = {
           view,
           startDate,
@@ -549,7 +559,7 @@ export default {
             outOfScopeEvents: this.view.outOfScopeEvents.map(this.cleanupEvent)
           } : {}),
           events: this.view.events.map(this.cleanupEvent),
-          ...(this.isWeekView ? { week: ud.getWeek(this.startWeekOnSunday ? ud.addDays(startDate, 1) : startDate) } : {})
+          ...(this.isWeekView ? { week: this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}` } : {})
         }
         this.$emit('view-change', params)
       }
@@ -592,7 +602,7 @@ export default {
           firstCellDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1 * modifier, 1)
           break
         case 'week':
-          firstCellDate = ud[next ? 'addDays' : 'subtractDays'](ud.getPreviousFirstDayOfWeek(startDate, this.startWeekOnSunday), 7)
+          firstCellDate = ud[next ? 'addDays' : 'subtractDays'](ud.getPreviousFirstDayOfWeek(startDate, this.startWeekOnDayComputed), 7)
           break
         case 'day':
           firstCellDate = ud[next ? 'addDays' : 'subtractDays'](startDate, 1)
@@ -1131,10 +1141,11 @@ export default {
       const ud = this.utils.date
       const firstCellWeekNumber = this.firstCellDateWeekNumber
       const currentWeekNumber = firstCellWeekNumber + weekFromFirstCell
-      const modifier = this.startWeekOnSunday ? 1 : 0
+      // FIXME: Is the modifier still needed at all? For now this has been removed
+      // const modifier = this.startWeekOnSunday ? 1 : 0
 
       if (currentWeekNumber > 52) {
-        return ud.getWeek(ud.addDays(this.view.firstCellDate, 7 * weekFromFirstCell + modifier))
+        return ud.getWeek(ud.addDays(this.view.firstCellDate, 7 * weekFromFirstCell))
       }
       else return currentWeekNumber
     },
@@ -1250,13 +1261,14 @@ export default {
 
     // Emit the `ready` event with useful parameters.
     const startDate = this.view.startDate
+    const weekOfYear = ud.getWeek(startDate)
     const params = {
       view: this.view.id,
       startDate,
       endDate: this.view.endDate,
       ...(this.isMonthView ? { firstCellDate: this.view.firstCellDate, lastCellDate: this.view.lastCellDate } : {}),
       events: this.view.events.map(this.cleanupEvent),
-      ...(this.isWeekView ? { week: ud.getWeek(this.startWeekOnSunday ? ud.addDays(startDate, 1) : startDate) } : {})
+      ...(this.isWeekView ? { week: this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}` } : {})
     }
 
     this.$emit('ready', params)
@@ -1319,7 +1331,12 @@ export default {
     firstCellDateWeekNumber () {
       const ud = this.utils.date
       const date = this.view.firstCellDate
-      return ud.getWeek(this.startWeekOnSunday ? ud.addDays(date, 1) : date)
+      const weekOfYear = ud.getWeek(date)
+      return ud.getWeek(this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}`)
+    },
+    startWeekOnDayComputed () {
+      // fallback for users who use startWeekOnSunday property
+      return this.startWeekOnSunday ? 0 : this.startWeekOnDay
     },
     // For week & day views.
     timeCells () {
@@ -1396,9 +1413,8 @@ export default {
         hide: (this.hideWeekends && i >= 5) || (this.hideWeekdays.length && this.hideWeekdays.includes(i + 1))
       }))
 
-      if (this.startWeekOnSunday) weekDays.unshift(weekDays.pop())
-
-      return weekDays
+      const daysBefore = weekDays.slice(0, this.startWeekOnDayComputed - 1)
+      return weekDays.concat(daysBefore).slice(daysBefore.length)
     },
     weekDaysInHeader () {
       return (
@@ -1467,7 +1483,9 @@ export default {
               else formattedMonthYear = `${m1} ${y1} - ${m2} ${y2}`
             }
           }
-          title = `${this.texts.week} ${ud.getWeek(this.startWeekOnSunday ? ud.addDays(date, 1) : date)} (${formattedMonthYear})`
+          const weekOfYear = ud.getWeek(date)
+          const week = this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}`
+          title = `${this.texts.week} ${week} (${formattedMonthYear})`
           break
         }
         case 'day': {

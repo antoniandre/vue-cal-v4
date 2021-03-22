@@ -127,9 +127,9 @@ export default class DateUtils {
   }
 
   // Returns today if it's FirstDayOfWeek (Monday or Sunday) or previous FirstDayOfWeek otherwise.
-  getPreviousFirstDayOfWeek (date = null, weekStartsOnSunday) {
+  getPreviousFirstDayOfWeek (date = null, startWeekOnDay) {
     const prevFirstDayOfWeek = (date && new Date(date.valueOf())) || new Date()
-    const dayModifier = weekStartsOnSunday ? 7 : 6
+    const dayModifier = 7 - startWeekOnDay
     prevFirstDayOfWeek.setDate(prevFirstDayOfWeek.getDate() - (prevFirstDayOfWeek.getDay() + dayModifier) % 7)
     return prevFirstDayOfWeek
   }
