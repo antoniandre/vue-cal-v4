@@ -548,18 +548,20 @@ export default {
 
       if (this.ready) {
         const startDate = this.view.startDate
+        const endDate = this.view.endDate
         const weekOfYear = ud.getWeek(startDate)
+        const nextWeekOfYear = ud.getWeek(endDate)
         const params = {
           view,
           startDate,
-          endDate: this.view.endDate,
+          endDate: endDate,
           ...(this.isMonthView ? {
             firstCellDate: this.view.firstCellDate,
             lastCellDate: this.view.lastCellDate,
             outOfScopeEvents: this.view.outOfScopeEvents.map(this.cleanupEvent)
           } : {}),
           events: this.view.events.map(this.cleanupEvent),
-          ...(this.isWeekView ? { week: this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}` } : {})
+          ...(this.isWeekView ? { week: this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${nextWeekOfYear}` } : {})
         }
         this.$emit('view-change', params)
       }
@@ -1141,11 +1143,10 @@ export default {
       const ud = this.utils.date
       const firstCellWeekNumber = this.firstCellDateWeekNumber
       const currentWeekNumber = firstCellWeekNumber + weekFromFirstCell
-      // FIXME: Is the modifier still needed at all? For now this has been removed
-      // const modifier = this.startWeekOnSunday ? 1 : 0
+      const modifier = (this.startWeekOnDayComputed + 1) % 7
 
       if (currentWeekNumber > 52) {
-        return ud.getWeek(ud.addDays(this.view.firstCellDate, 7 * weekFromFirstCell))
+        return ud.getWeek(ud.addDays(this.view.firstCellDate, 7 * weekFromFirstCell + modifier))
       }
       else return currentWeekNumber
     },
@@ -1261,14 +1262,16 @@ export default {
 
     // Emit the `ready` event with useful parameters.
     const startDate = this.view.startDate
+    const endDate = this.view.endDate
     const weekOfYear = ud.getWeek(startDate)
+    const nextWeekOfYear = ud.getWeek(endDate)
     const params = {
       view: this.view.id,
       startDate,
-      endDate: this.view.endDate,
+      endDate: endDate,
       ...(this.isMonthView ? { firstCellDate: this.view.firstCellDate, lastCellDate: this.view.lastCellDate } : {}),
       events: this.view.events.map(this.cleanupEvent),
-      ...(this.isWeekView ? { week: this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}` } : {})
+      ...(this.isWeekView ? { week: this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${nextWeekOfYear}` } : {})
     }
 
     this.$emit('ready', params)
@@ -1330,9 +1333,7 @@ export default {
     },
     firstCellDateWeekNumber () {
       const ud = this.utils.date
-      const date = this.view.firstCellDate
-      const weekOfYear = ud.getWeek(date)
-      return ud.getWeek(this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}`)
+      return ud.getWeek(this.view.firstCellDate)
     },
     startWeekOnDayComputed () {
       // fallback for users who use startWeekOnSunday property
@@ -1484,7 +1485,8 @@ export default {
             }
           }
           const weekOfYear = ud.getWeek(date)
-          const week = this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${(weekOfYear + 1) % 52}`
+          const nextWeekOfYear = ud.getWeek(lastDayOfWeek)
+          const week = this.startWeekOnDayComputed === 1 ? weekOfYear : `${weekOfYear} / ${nextWeekOfYear}`
           title = `${this.texts.week} ${week} (${formattedMonthYear})`
           break
         }
