@@ -146,7 +146,7 @@ export default {
      * the date & time at cursor if click/touch.
      */
     onCellFocus (DOMEvent) {
-      if (!this.isSelected) {
+      if (!this.isSelected && !this.isDisabled) {
         this.isSelected = this.data.startDate // Highlight the cell.
 
         // If splitting days, also return the clicked split on cell focus when emitting event.
