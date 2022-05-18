@@ -988,7 +988,7 @@ export default {
       // Lots of these variables may look redundant but are here for performance as a cached result of calculation. :)
       this.events.forEach(event => {
         // `event.start` accepts a Date object, or a formatted string, but always convert to Date.
-        const start = typeof event.start === 'string' ? ud.stringToDate(event.start) : event.start
+        const start = typeof event.start === 'string' ? ud.stringToDate(event.start) :  new Date(event.start)
         const startDateF = ud.formatDateLite(start)
         const startTimeMinutes = ud.dateToMinutes(start)
 
@@ -999,7 +999,7 @@ export default {
           end = new Date(event.end.replace(' 24:00', ''))
           end.setHours(23, 59, 59, 0) // Sets to the same day at 23.59.59.
         }
-        else end = typeof event.end === 'string' ? ud.stringToDate(event.end) : event.end
+        else end = typeof event.end === 'string' ? ud.stringToDate(event.end) : new Date(event.end)
         let endDateF = ud.formatDateLite(end)
         let endTimeMinutes = ud.dateToMinutes(end)
 
