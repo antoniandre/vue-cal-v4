@@ -27,6 +27,8 @@
       slot(name="weekday-heading" :heading="heading" :view="view")
     template(#split-label="{ split }" v-if="$slots['split-label']")
       slot(name="split-label" :split="split" :view="view.id")
+    template(#name v-if="$slots['name']")
+      slot(name="name") {{ $slots['name'] }}
 
   .vuecal__flex.vuecal__body(v-if="!hideBody" grow)
     transition(:name="`slide-fade--${transitionDirection}`" :appear="transitions")
@@ -170,7 +172,7 @@ const textsDefaults = {
   pm: 'pm'
 }
 
-const validViews = ['years', 'year', 'month', 'week', 'day']
+const validViews = ['years', 'year', 'month', 'week', 'day','timeline']
 
 // Only 1 instance of DateUtils for all the instances of Vue Cal, created when first importing the Vue Cal lib.
 // The dateUtils does not need to be dependent of Vue Cal instance, it only needs localized texts when ready.
@@ -219,6 +221,8 @@ export default {
     events: { type: Array, default: () => [] },
     eventsCountOnYearView: { type: Boolean, default: false },
     eventsOnMonthView: { type: [Boolean, String], default: false },
+    headerType: { type: String, default: '' },
+    headerOrder: { type: Array, default: null },
     hideBody: { type: Boolean, default: false },
     hideTitleBar: { type: Boolean, default: false },
     hideViewSelector: { type: Boolean, default: false },
@@ -251,6 +255,7 @@ export default {
     timeFrom: { type: Number, default: 0 }, // In minutes.
     timeStep: { type: Number, default: 60 }, // In minutes.
     timeTo: { type: Number, default: minutesInADay }, // In minutes.
+    title: { type: String, default: '' },
     todayButton: { type: Boolean, default: false },
     transitions: { type: Boolean, default: true },
     twelveHour: { type: Boolean, default: false },

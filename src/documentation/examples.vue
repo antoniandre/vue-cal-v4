@@ -98,6 +98,53 @@
 
   //- Example.
   h4.title2
+    a(href="#ex--alternative-header") # Alternative header - 1 line header
+    a#ex--alternative-header(name="ex--alternative-header")
+
+  .example.my2.mxa(style="height: 250px")
+    vue-cal(
+      xsmall
+      :class="`vuecal--${example1theme}-theme`"
+      header-type="row"
+    )
+  ssh-pre(language="html-vue" label="Vue Template").
+    &lt;vue-cal header-type="row" /&gt;
+  highlight-message For all the options details, refer to the #[a(href="#api") API] section.
+
+  //- Example.
+  h4.title2
+    a(href="#ex--alternative-header-left-title") # Alternative header with left title
+    a#ex--alternative-header-left-title(name="ex--alternative-header")
+
+  .example.my2.mxa(style="height: 250px")
+    vue-cal(
+      xsmall
+      :class="`vuecal--${example1theme}-theme`"
+      title="My events"
+      header-type="row"
+    )
+  ssh-pre(language="html-vue" label="Vue Template").
+    &lt;vue-cal title="My events" header-type="row" /&gt;
+  highlight-message For all the options details, refer to the #[a(href="#api") API] section.
+
+  //- Example.
+  h4.title2
+    a(href="#ex--alternative-header-center-title") # Alternative header with center title and inverted menu
+    a#ex--alternative-header-center-title(name="ex--alternative-header-center-title")
+  .my2(style="height: 250px")
+    vue-cal(
+      xsmall
+      :class="`vuecal--${example1theme}-theme`"
+      title="My events"
+      header-type="row"
+      :header-order="['title-bar', 'name', 'menu']"
+    )
+  ssh-pre(language="html-vue" label="Vue Template").
+    &lt;vue-cal title="My events" header-type="row" :header-order="['title-bar','name','menu']" /&gt;
+  highlight-message For all the options details, refer to the #[a(href="#api") API] section.
+
+  //- Example.
+  h4.title2
     a(href="#ex--small-cal") # Small calendar, no time, hidden view selector &amp; custom arrows
     a#ex--small-cal(name="ex--small-cal")
   p.

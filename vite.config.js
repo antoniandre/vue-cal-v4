@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { terser } from "rollup-plugin-terser" // Minifier.
+import terser from "@rollup/plugin-terser";
 import { resolve } from 'path'
 import pkg from './package.json'
 import autoprefixer from 'autoprefixer'

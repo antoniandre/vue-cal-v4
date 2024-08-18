@@ -9,6 +9,10 @@ const routes = [
   {
     path: '/test',
     component: () => import('@/documentation/isolated-test-view.vue')
+  },
+  {
+    path: '/test-html',
+    component: () => import('@/documentation/isolated-test-view-html.vue')
   }
 ]
 

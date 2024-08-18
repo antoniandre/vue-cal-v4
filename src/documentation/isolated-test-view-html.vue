@@ -1,7 +1,8 @@
-<template lang="pug">
-//- This is an isolated test view. Just for testing purpose.
-div.test-view
-  vue-cal.ml2.mr1.vuecal--blue-theme(
+<template>
+<div class="test-view">
+  <vue-cal
+    v-model:selectedDate="selectedDate"
+    class="ml2 mr1 vuecal--blue-theme"
     xsmall
     :events="events"
     editable-events
@@ -11,12 +12,14 @@ div.test-view
     :time-to="20 * 60"
     :special-hours="specialHours"
     :hide-view-selector="false"
-    v-model:selectedDate="selectedDate"
-    @cell-contextmenu="log"
-  )
-    template(#name)
-      slot(name="name") VueCal Test View
-  p selectedDate: {{ selectedDate }}
+    :cell-contextmenu="log"
+    header-type="row"
+    :header-order="['name', 'menu', 'title-bar']"
+  >
+    <template #name>VueCal Test View</template>
+  </vue-cal>
+  <p>selectedDate: {{ selectedDate }}</p>
+</div>
 </template>
 
 <script>

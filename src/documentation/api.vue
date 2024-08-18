@@ -26,6 +26,7 @@ div
     events:                 [Array],           default: []
     eventsCountOnYearView:  [Boolean],         default: false
     eventsOnMonthView:      [Boolean, String], default: false
+    headerType:             [String],          default: null
     hideBody:               [Boolean],         default: false
     hideTitleBar:           [Boolean],         default: false
     hideViewSelector:       [Boolean],         default: false

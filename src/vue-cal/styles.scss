@@ -57,6 +57,11 @@ $splits-headers-height: 1.5em;
     &[wrap] {
       flex-wrap: wrap;
     }
+
+    &.end {
+      justify-content: end;
+      align-items: center;
+    }
   }
 
   // Calendar header.

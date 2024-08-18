@@ -102,6 +102,7 @@ export default {
     examples: [
       { class: 'heading', href: '#ex--basic', label: 'BASIC &amp; VIEW OPTIONS', icon: 'material-icons done' },
       { href: '#ex--basic', label: 'Basic, hide weekends' },
+      { href: '#ex--alternative-header', label: 'Alternative header' },
       { href: '#ex--small-cal', label: 'Small calendar, no view selector, custom arrows' },
       { href: '#ex--disable-views', label: 'Disable views, default view' },
       { href: '#ex--min-max-dates', label: 'Min / max dates &amp; single click to navigate' },
