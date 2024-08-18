@@ -221,7 +221,7 @@ export default {
     events: { type: Array, default: () => [] },
     eventsCountOnYearView: { type: Boolean, default: false },
     eventsOnMonthView: { type: [Boolean, String], default: false },
-    headerType: { type: String, default: '' },
+    headerType: { type: String, default: null },
     headerOrder: { type: Array, default: null },
     hideBody: { type: Boolean, default: false },
     hideTitleBar: { type: Boolean, default: false },
