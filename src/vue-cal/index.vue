@@ -1417,7 +1417,7 @@ export default {
     maxTimestamp () {
       let date = null
       if (this.maxDate && typeof this.maxDate === 'string') date = this.utils.date.stringToDate(this.maxDate)
-      else if (this.maxDate && this.minDate instanceof Date) date = this.maxDate
+      else if (this.maxDate && this.maxDate instanceof Date) date = this.maxDate
       return date ? date.getTime() : null
     },
     weekDays () {
