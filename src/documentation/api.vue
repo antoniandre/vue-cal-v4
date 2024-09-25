@@ -481,13 +481,12 @@ div
     li
       code.mr2 editableEvents
       span.code [Boolean, Object], default: false
-      p
-        | When #[span.code editableEvents] is set to #[span.code true], it allows:
-        ul
-          li Dragging and dropping events
-          li Resizing events by dragging the handle showing at the bottom of each event if #[span.code time] is set to #[span.code true],
-          li Deleting events by click and hold an event.
-          li Editing events title
+      p When #[span.code editableEvents] is set to #[span.code true], it allows:
+      ul
+        li Dragging and dropping events
+        li Resizing events by dragging the handle showing at the bottom of each event if #[span.code time] is set to #[span.code true],
+        li Deleting events by click and hold an event.
+        li Editing events title
       highlight-message
         ul
           li
@@ -570,28 +569,28 @@ div
             deletable: false // optional - force undeletable when events are editable.
             resizable: false // optional - force unresizable when events are editable.
           }
-        ul
-          li If no #[span.code title] is provided, no title will be displayed.
-          li.
-            #[span.code content] accepts free HTML, for instance:
-            '&lt;i class="icon material-icons"&gt;local_hospital&lt;/i&gt;'.#[br]
-            If no #[span.code content] is provided, no content will be displayed.
-          li.
-            You may need an event CSS #[span.code class] to handle different event types
-            for instance. With different classes you can apply different styles to the events.#[br]
-            E.g. backgrounds, images, borders, etc.
-          li.
-            The #[span.code background] attribute sets an event as a background event,
-            which allows overlapping and disable the ability to drag &amp; resize.
-          li.
-            When using #[span.code splitDays], the #[span.code split] attribute accepts a number,
-            starting from 1, corresponding to the split you want the event to appear in.#[br]
-            Optionally, if you have set the #[span.code id] property in #[span.code splitDays],
-            you have to use the same #[span.code id] here (Integer or String).
-          li.
-            When the #[span.code showAllDayEvents] and #[span.code time] options are set to
-            #[span.code true], all the events with an attribute #[span.code allDay] set to
-            #[span.code true] will show up in a fixed bar (week &amp; day views).
+      ul
+        li If no #[span.code title] is provided, no title will be displayed.
+        li.
+          #[span.code content] accepts free HTML, for instance:
+          '&lt;i class="icon material-icons"&gt;local_hospital&lt;/i&gt;'.#[br]
+          If no #[span.code content] is provided, no content will be displayed.
+        li.
+          You may need an event CSS #[span.code class] to handle different event types
+          for instance. With different classes you can apply different styles to the events.#[br]
+          E.g. backgrounds, images, borders, etc.
+        li.
+          The #[span.code background] attribute sets an event as a background event,
+          which allows overlapping and disable the ability to drag &amp; resize.
+        li.
+          When using #[span.code splitDays], the #[span.code split] attribute accepts a number,
+          starting from 1, corresponding to the split you want the event to appear in.#[br]
+          Optionally, if you have set the #[span.code id] property in #[span.code splitDays],
+          you have to use the same #[span.code id] here (Integer or String).
+        li.
+          When the #[span.code showAllDayEvents] and #[span.code time] options are set to
+          #[span.code true], all the events with an attribute #[span.code allDay] set to
+          #[span.code true] will show up in a fixed bar (week &amp; day views).
 
       highlight-message(type="warning")
         strong Important notes

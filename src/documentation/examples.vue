@@ -2057,7 +2057,7 @@
   h4.title2
     a(href="#ex--splitting-days") # Splitting days &amp; split events
     a#ex--splitting-days(name="ex--splitting-days")
-  p.mb6
+  .mb6
     | Split each day into multiple containers passing a CSS class &amp; a label per split, and allow split-specific events.
     br
     br
