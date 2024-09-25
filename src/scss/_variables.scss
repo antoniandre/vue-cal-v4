@@ -2,15 +2,3 @@ $primary: #42b983;
 $page-max-width: 1200px;
 $container-padding-md: 20px;
 $container-padding-sm: 12px;
-
-@mixin backdrop-blur($blur: 4px, $fallback-color: rgba(255, 255, 255, 0.9), $blur-color: rgba(255, 255, 255, 0.6)) {
-  background-color: $fallback-color; // Slightly transparent fallback by default.
-
-  // If backdrop support: very transparent and blurred.
-  @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-    & {
-      background-color: $blur-color;
-      backdrop-filter: blur($blur);
-    }
-  }
-}

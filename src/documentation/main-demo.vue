@@ -212,21 +212,21 @@ $kate: #ff7fc8;
   }
 
   // John.
-  .vuecal__header .john {color: darken($john, 5);}
+  .vuecal__header .john {color: adjust-color($john, $lightness: -5%);}
   .vuecal__body .john {background-color: rgba($john, 0.08);}
-  .john .vuecal__event {background-color: rgba(lighten($john, 5), 0.85);color: #fff;}
+  .john .vuecal__event {background-color: rgba(adjust-color($john, $lightness: -5%), 0.85);color: #fff;}
   .john .lunch {
     background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba($john, 0.15) 10px, rgba($john, 0.15) 20px);
-    color: transparentize(darken($john, 10), 0.4);
+    color: rgba(adjust-color($john, $lightness: -10%), 0.4);
   }
 
   // Kate.
-  .vuecal__header .kate {color: darken($kate, 5);}
+  .vuecal__header .kate {color: adjust-color($kate, $lightness: -5%);}
   .vuecal__body .kate {background-color: rgba($kate, 0.08);}
-  .kate .vuecal__event {background-color: rgba(lighten($kate, 5), 0.85);color: #fff;}
+  .kate .vuecal__event {background-color: rgba(adjust-color($kate, $lightness: -5%), 0.85);color: #fff;}
   .kate .lunch {
     background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba($kate, 0.15) 10px, rgba($kate, 0.15) 20px);
-    color: transparentize(darken($kate, 10), 0.4);
+    color: rgba(adjust-color($kate, $lightness: -10%), 0.4);
   }
   // ------------------------------------------------------
 }
