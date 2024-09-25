@@ -1,6 +1,10 @@
 <template lang="pug">
 div
   div.mb1
+    strong.mr1 Version 4.10.0
+    | Merged PRs #585, #536, #528: fixed week start date when starting week on Sunday, fixed maxTimestamp, fixed date format on `en` locale.
+
+  div.mb1
     strong.mr1 Version 4.9.0
     | Added the Portuguese (Portugal) and Finnish locale.
 
