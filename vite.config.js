@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { terser } from "rollup-plugin-terser" // Minifier.
 import { resolve } from 'path'
 import pkg from './package.json'
 import autoprefixer from 'autoprefixer'
@@ -14,6 +13,7 @@ const banner = `/**
   */\n`
 
 const bundlingConf = {
+  minify: 'terser',
   lib: {
     entry: resolve(__dirname, 'src/vue-cal/index.vue'),
     name: 'vuecal' // For IIFE.
@@ -30,7 +30,6 @@ const bundlingConf = {
         entryFileNames: 'vue-cal.[format].js',
         chunkFileNames: '[name].js',
         banner,
-        plugins: [terser()], // Minify.
         manualChunks(id) {
           const match = /i18n\/(.{2,5})\.json/.exec(id)
           if (match) return 'i18n/' + match[1] + '.es'
