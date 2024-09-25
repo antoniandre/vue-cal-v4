@@ -35,7 +35,7 @@
     w-alert.message-box(border-left color="orange-dark1")
       p.
         Vue 2 has reached EOL, and so has Vue Cal legacy branch.#[br]
-        You can still you it for Vue 2 projects with #[code.grey-light6--bg.bdrs1.px1 npm i vue-cal@#[strong legacy]], but
+        You can still use it for Vue 2 projects with #[code.grey-light6--bg.bdrs1.px1 npm i vue-cal@#[strong legacy]], but
         it will not receive further updates or support.#[br]Time to move on! 🚀
 
 
