@@ -366,17 +366,9 @@ export default {
         return
       }
 
-      if (this.locale === 'en') {
-        const texts = await import('./i18n/en.json')
-        this.texts = Object.assign({}, textsDefaults, texts)
-      }
-      else {
-        import(`./i18n/${locale}.json`)
-          .then(response => {
-            this.texts = Object.assign({}, textsDefaults, response.default)
-            this.utils.date.updateTexts(this.texts)
-          })
-      }
+      const texts = await import(`./i18n/${locale}.json`)
+      this.texts = Object.assign({}, textsDefaults, texts)
+      this.utils.date.updateTexts(this.texts)
     },
 
     /**
