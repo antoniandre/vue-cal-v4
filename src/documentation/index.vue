@@ -23,7 +23,7 @@
             | what can be done via CSS should be done via CSS. CSS classes will help you style your events,
             | cells, splits, etc.#[br]
             | Vue Cal provides the minimum needed CSS styles, not the nicest one: that makes it highly
-            | customizable for all the scenarii and a breeze to override.#[br]
+            | customizable for all the scenario and a breeze to override.#[br]
             strong You most likely don't need the #[code !important] flag.
 
   .announcement.w-flex.align-center.mb6
