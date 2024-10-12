@@ -3,6 +3,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 [![npm](https://img.shields.io/npm/dt/vue-cal.svg)](https://www.npmjs.com/package/vue-cal)
 [![npm](https://img.shields.io/npm/dw/vue-cal.svg)](https://www.npmjs.com/package/vue-cal)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 > A Vue JS full calendar, no dependency, no BS. :metal:
 
 <br>
