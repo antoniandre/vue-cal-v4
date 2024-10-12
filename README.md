@@ -1,14 +1,16 @@
-> [!WARNING]
-> This library is to be used as is for the current codebase. 
-> However, I am actively working on the v5 in a branch. 😎
-
-# vue-cal
-
+# Vue Cal v4
 [![Latest Version on NPM](https://img.shields.io/npm/v/vue-cal.svg)](https://npmjs.com/package/vue-cal)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 [![npm](https://img.shields.io/npm/dt/vue-cal.svg)](https://www.npmjs.com/package/vue-cal)
 [![npm](https://img.shields.io/npm/dw/vue-cal.svg)](https://www.npmjs.com/package/vue-cal)
 > A Vue JS full calendar, no dependency, no BS. :metal:
+
+<br>
+
+> [!WARNING]
+> **VERSION 4.10.0 IS THE FINAL RELEASE IN THIS REPOSITORY AND IS NO LONGER ACTIVELY MAINTAINED. FOR THE LATEST DEVELOPMENTS AND V5, VISIT [Vue Cal V5](https://github.com/antoniandre/vue-cal)!**  🚀
+
+<br>
 
 ## Installation
 
