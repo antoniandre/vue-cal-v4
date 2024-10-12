@@ -10,7 +10,8 @@
 
 > [!WARNING]
 > **VERSION 4.10.0 IS THE FINAL RELEASE IN THIS REPOSITORY AND IS NO LONGER ACTIVELY MAINTAINED. FOR THE LATEST DEVELOPMENTS AND V5, VISIT [Vue Cal V5](https://github.com/antoniandre/vue-cal)!**  🚀
-
+> - For the latest stable v4.x.x, continue using this version.
+> - To contribute to v5 or try the new features, head over to the [v5 repo](https://github.com/antoniandre/vue-cal).
 <br>
 
 ## Installation
