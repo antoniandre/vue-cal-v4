@@ -39,9 +39,9 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base /vue-cal/",
+    "build": "vite build --base /vue-cal-v4/",
     "build-bundle": "BUNDLE=true vite build && mv ./dist/style.css ./dist/vuecal.css && rm ./dist/favicon.ico",
-    "serve": "vite preview docs --base /vue-cal-v4/",
+    "serve": "vite preview --outDir docs --base /vue-cal-v4/",
     "lint": "vite lint"
   },
   "devDependencies": {
