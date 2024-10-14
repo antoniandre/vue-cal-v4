@@ -3625,7 +3625,7 @@ export default {
       e.stopPropagation()
     },
     cancelEventCreation () {
-      this.closeCreationDialog()
+      this.closeCreationDialog();
       (this.deleteEventFunction || this.deleteDragEventFunction)()
     },
     closeCreationDialog () {
