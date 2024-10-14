@@ -29,7 +29,7 @@ npm i vue-cal@legacy
 ___
 
 ## Demo & Documentation
-> [antoniandre.github.io/vue-cal](https://antoniandre.github.io/vue-cal)
+> [antoniandre.github.io/vue-cal-v4](https://antoniandre.github.io/vue-cal-v4)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 ## Release Notes
 
-[antoniandre.github.io/vue-cal/#release-notes](https://antoniandre.github.io/vue-cal/#release-notes)
+[antoniandre.github.io/vue-cal-v4/#release-notes](https://antoniandre.github.io/vue-cal-v4/#release-notes)
