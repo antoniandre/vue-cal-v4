@@ -439,7 +439,7 @@ div
       p.
         When set to #[span.code true], each event of the same cell will have a width of
         #[span.code 100% / [number of simultaneous events]] only if these events are within the same time step.#[br]
-        Refer to #[a(href="https://github.com/antoniandre/vue-cal/pull/182" target="_blank") this use case].
+        Refer to #[a(href="https://github.com/antoniandre/vue-cal-v4/pull/182" target="_blank") this use case].
     li
       code.mr2 minCellWidth
       span.code [Number], default: 0
@@ -615,7 +615,7 @@ div
       span.code [Boolean], default: false
       p.
         If you really don't want the Date prototypes to be added, you can disable them with this option.#[br]
-        Refer to #[a(href="https://github.com/antoniandre/vue-cal/issues/259" target="_blank" style="text-decoration: underline;color: inherit") This Vue Cal issue on Github].
+        Refer to #[a(href="https://github.com/antoniandre/vue-cal-v4/issues/259" target="_blank" style="text-decoration: underline;color: inherit") This Vue Cal issue on Github].
 
   h2.title1.mt12.pt12
     a(href="#date-prototypes") #[strong.code Date] Prototypes
@@ -725,7 +725,7 @@ div
       li.mt4.
         If you really don't want the Date prototypes to be added, you can disable them with this option:
         #[span.code disable-date-prototypes].#[br]
-        Refer to #[a(href="https://github.com/antoniandre/vue-cal/issues/259" target="_blank" style="text-decoration: underline;color: inherit") This Vue Cal issue on Github].
+        Refer to #[a(href="https://github.com/antoniandre/vue-cal-v4/issues/259" target="_blank" style="text-decoration: underline;color: inherit") This Vue Cal issue on Github].
 </template>
 
 <script>

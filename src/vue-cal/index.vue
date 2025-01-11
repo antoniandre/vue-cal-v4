@@ -1188,7 +1188,7 @@ export default {
      * This function will also push the weekdays-headings and all-day bar to have them properly aligned.
      * The calculated style will be placed in the document head in a style tag so it's only done once
      * (the scrollbar width never changes).
-     * Ref. https://github.com/antoniandre/vue-cal/issues/221
+     * Ref. https://github.com/antoniandre/vue-cal-v4/issues/221
      */
     alignWithScrollbar () {
       // If already done from another instance, exit.
@@ -1270,7 +1270,7 @@ export default {
       }
     }
 
-    // https://github.com/antoniandre/vue-cal/issues/221
+    // https://github.com/antoniandre/vue-cal-v4/issues/221
     if (!this.hideBody) this.alignWithScrollbar()
 
     // Emit the `ready` event with useful parameters.

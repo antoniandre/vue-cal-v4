@@ -36,7 +36,7 @@
           w-icon(:color="split.color" size="20") material-icons person
           strong(:style="`color: ${split.color}`") {{ split.label }}
       a.mt4.w-flex.justify-end.grey-light1(
-        href="https://github.com/antoniandre/vue-cal/blob/master/src/documentation/main-demo.vue"
+        href="https://github.com/antoniandre/vue-cal-v4/blob/master/src/documentation/main-demo.vue"
         target="_blank")
         | View this example source code
         w-icon.ml1(color="grey lighten-1") material-icons open_in_new

@@ -1848,7 +1848,7 @@
   highlight-message.mb6.
     In some cases you may want to set the events overlaps calculation only per same time step
     (default time step is 1 hour), like in
-    #[a(href="https://github.com/antoniandre/vue-cal/pull/182" target="_blank") this use case].#[br]
+    #[a(href="https://github.com/antoniandre/vue-cal-v4/pull/182" target="_blank") this use case].#[br]
     You can achieve this event overlaps grouping with the option #[span.code overlaps-per-time-step].
 
   .example.my2.mxa

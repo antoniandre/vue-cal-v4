@@ -7,16 +7,16 @@
   h2.mt12.pt12.mb4.title2 Github project &nbsp;&amp;&nbsp; important notes
   .announcement.announcement--github.w-flex.align-center.mb8
     w-icon.mr5.lightgrey(size="46") fab fa-github
-    a.title4(href="https://github.com/antoniandre/vue-cal" target="_blank") //github.com/antoniandre/vue-cal #[w-icon(color="primary") material-icons open_in_new]
+    a.title4(href="https://github.com/antoniandre/vue-cal-v4" target="_blank") //github.com/antoniandre/vue-cal-v4 #[w-icon(color="primary") material-icons open_in_new]
 
   .announcement.w-flex.align-center.mb8
     w-icon.ml-1.mr4(size="50" color="amber-light3") material-icons info
     w-alert.message-box.important-notes(border-left color="orange-dark1" bg-color="yellow-light5")
       ul.ml6
         li.mb2
-          a.text-bold.title2.inherit(href="https://github.com/antoniandre/vue-cal/commits/v5/" target="_blank") Vue Cal v5 is cooking! #[w-icon.mb1(color="primary" md) material-icons open_in_new]
+          a.text-bold.title2.inherit(href="https://github.com/antoniandre/vue-cal/" target="_blank") Vue Cal v5 is cooking! #[w-icon.mb1(color="primary" md) material-icons open_in_new]
         li.mb2
-          a.text-bold.inherit(href="https://github.com/antoniandre/vue-cal/discussions" target="_blank") NEW: You can start discussions in this channel #[w-icon.mb1(color="primary" sm) material-icons open_in_new]
+          a.text-bold.inherit(href="https://github.com/antoniandre/vue-cal-v4/discussions" target="_blank") NEW: You can start discussions in this channel #[w-icon.mb1(color="primary" sm) material-icons open_in_new]
         li.mb2
           strong Always check the #[a(href="#release-notes") Release Notes] when you upgrade
         li
@@ -140,9 +140,9 @@
           todo-list-item(status="todo") Drag &amp; drop multiple day events
           todo-list-item(status="todo") Drag &amp; drop events on touch devices
           todo-list-item(status="todo")
-            a(href="https://github.com/antoniandre/vue-cal/issues/168" target="_blank" style="text-decoration: underline;color: inherit") Full Typescript support
+            a(href="https://github.com/antoniandre/vue-cal-v4/issues/168" target="_blank" style="text-decoration: underline;color: inherit") Full Typescript support
           todo-list-item(status="todo")
-            a(href="https://github.com/antoniandre/vue-cal/issues/127" target="_blank" style="text-decoration: underline;color: inherit") Full SSR support
+            a(href="https://github.com/antoniandre/vue-cal-v4/issues/127" target="_blank" style="text-decoration: underline;color: inherit") Full SSR support
           todo-list-item(status="todo") Improve multiple day events Month view
           todo-list-item(status="todo") Prevent event intersect. on drag/resize
           todo-list-item(status="todo") Horizontal timeline
@@ -355,7 +355,7 @@
 <script>
 import SshPre from 'simple-syntax-highlighter'
 import 'simple-syntax-highlighter/dist/sshpre.css'
-import VueCal from '@/vue-cal/index.vue'
+import VueCal from '@/vue-cal-v4/index.vue'
 import HighlightMessage from './components/highlight-message.vue'
 import TodoListItem from './components/todo-list-item.vue'
 import MainDemo from './main-demo.vue'
