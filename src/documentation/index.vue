@@ -355,7 +355,7 @@
 <script>
 import SshPre from 'simple-syntax-highlighter'
 import 'simple-syntax-highlighter/dist/sshpre.css'
-import VueCal from '@/vue-cal-v4/index.vue'
+import VueCal from '@/vue-cal/index.vue'
 import HighlightMessage from './components/highlight-message.vue'
 import TodoListItem from './components/todo-list-item.vue'
 import MainDemo from './main-demo.vue'
