@@ -1421,7 +1421,7 @@
   //- Example.
   h4.title2
     a(href="#ex--drag-and-drop") # Event drag &amp; drop
-    w-tag.ml3.px2(bg-color="error" outline round) NOT ON TOUCH DEVICES
+    w-tag.ml3.px2(bg-color="error" outline round) LIMITED SUPPORT ON TOUCH DEVICES
     a#ex--drag-and-drop(name="ex--drag-and-drop")
   p.mb2.
     In addition to the obvious event dragging itself, there are quite a few things that are good
@@ -1532,7 +1532,7 @@
   //- Example.
   h4.title2
     a(href="#ex--external-events-drag-and-drop") # External events drag &amp; drop
-    w-tag.ml3.px2(bg-color="error" outline round) NOT ON TOUCH DEVICES
+    w-tag.ml3.px2(bg-color="error" outline round) LIMITED SUPPORT ON TOUCH DEVICES
     a#ex--external-events-drag-and-drop(name="ex--external-events-drag-and-drop")
   p.mb2.
     You can drag &amp; drop events from an external source as long as they are HTML5 draggable (this will change when touch devices are supported).#[br]
