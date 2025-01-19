@@ -154,9 +154,9 @@ export default class DateUtils {
    * Simply takes a Date and returns the associated time in minutes (sum of hours + minutes).
    *
    * @param {Date} date the JavaScript Date to extract minutes from.
-   * @return {Number} the number of minutes (total of hours plus minutes).
+   * @return {Number} the number of minutes (total of hours plus minutes plus fractional seconds).
    */
-  dateToMinutes = date => date.getHours() * 60 + date.getMinutes()
+  dateToMinutes = date => date.getHours() * 60 + date.getMinutes() + date.getSeconds() / 60
 
   /**
    * Count the number of days this date range spans onto.
