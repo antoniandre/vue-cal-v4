@@ -180,7 +180,8 @@ export default {
       clickHoldACell.eventCreated = false
 
       this.timeAtCursor = new Date(this.data.startDate)
-      const { minutes, cursorCoords: { y } } = this.vuecal.minutesAtCursor(DOMEvent)
+      let { minutes, cursorCoords: { y } } = this.vuecal.minutesAtCursor(DOMEvent)
+      minutes -= this.timeAtCursor.getHours() * 60;
       this.timeAtCursor.setMinutes(minutes)
 
       const mouseDownOnEvent = this.isDOMElementAnEvent(DOMEvent.target)
